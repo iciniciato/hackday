@@ -1,9 +1,11 @@
 package br.com.invillia.service;
 
+import br.com.invillia.model.Combustivel;
 import br.com.invillia.model.Destino;
 import br.com.invillia.model.MotorQuantico;
 import br.com.invillia.model.Nave;
 import br.com.invillia.model.Piloto;
+import br.com.invillia.model.TipoCombustivel;
 
 import java.util.List;
 
@@ -38,13 +40,31 @@ import java.util.List;
  **/
 public class PilotoAutoService {
 
+    public static final int QTD_NECESSARIA_PARA_UM_SALTO_EM_CRISTAL = 98;
+    public static final int QTD_NECESSARIA_PARA_UM_SALTO_EM_COMBUSTIVEL = 158;
+
     /**
      * Verifica a quantidade de combustível que há no motor e qual a sua autonomia
      *
-     * @return Double quantidade de saltos que o motor consiguirá fazer com a quantidade de combustivel atual
+     * - Deve levar em consideração as seguintes informações:
+     * -> Para efetuar um salto quântico é necessário 98 Litros em cristal liquido e 158 Litros em combustível de foguete
+     *
+     * @return Integer quantidade de saltos que o motor consiguirá fazer com a quantidade de combustivel atual
      */
-    public Double verificarCombustivel(final MotorQuantico nave) {
-        return null;
+    public Integer verificarCombustivel(final MotorQuantico motorQuantico) {
+        int autonomia = 0;
+
+        for (Combustivel combustivel : motorQuantico.getCombustiveisDisponiveis()) {
+                if(combustivel.getTipoCombustivel().equals(TipoCombustivel.CRISTAL_DE_ENERGIA_LIQUIDO)){
+                    autonomia += combustivel.getQuantidadeEmLitros() / QTD_NECESSARIA_PARA_UM_SALTO_EM_CRISTAL;
+                } else {
+                    autonomia += combustivel.getQuantidadeEmLitros() / QTD_NECESSARIA_PARA_UM_SALTO_EM_COMBUSTIVEL;
+                }
+        }
+
+        motorQuantico.setAutonomia(autonomia);
+
+        return autonomia;
     }
 
     /**
@@ -91,11 +111,6 @@ public class PilotoAutoService {
      *
      * @return true se a o piloto automatico for ligado com sucesso
      * @exception Exception é retornada que caso não seja possivel ligar o piloto automatico
-
-     OI DENIS
-
-     Não sou guia técnico, não vou compilar
-     vai sim
      */
     public Boolean ligarPilotoAutomatico(final Piloto piloto, final Nave nave, final List<Destino> destinos) throws Exception{
         return true;

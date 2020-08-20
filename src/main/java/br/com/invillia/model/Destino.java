@@ -1,6 +1,8 @@
 package br.com.invillia.model;
 
-public class Destino {
+import java.io.Serializable;
+
+public class Destino implements Serializable {
 
     private String pontoDeOrigem;
     private String pontoDeDestino;

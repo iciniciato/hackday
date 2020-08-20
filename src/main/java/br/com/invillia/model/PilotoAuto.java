@@ -1,4 +1,6 @@
 package br.com.invillia.model;
 
-public class PilotoAuto {
+import java.io.Serializable;
+
+public class PilotoAuto implements Serializable {
 }

@@ -10,7 +10,7 @@ import java.util.Collections;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 
-public class DESAFIO_002_MotorServiceTest {
+public class DESAFIO_002_MotorQuanticoServiceTest {
 
     private PilotoAutoService pilotoAutoService;
 

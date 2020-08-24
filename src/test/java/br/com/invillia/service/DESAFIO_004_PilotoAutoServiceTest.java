@@ -3,10 +3,10 @@ package br.com.invillia.service;
 import br.com.invillia.model.Combustivel;
 import br.com.invillia.model.MotorQuantico;
 import br.com.invillia.model.Nave;
-import br.com.invillia.model.PilotoAuto;
-import br.com.invillia.model.Rota;
 import br.com.invillia.model.Patente;
 import br.com.invillia.model.Piloto;
+import br.com.invillia.model.PilotoAuto;
+import br.com.invillia.model.Rota;
 import br.com.invillia.model.TipoCombustivel;
 import org.hamcrest.core.Is;
 import org.hamcrest.core.IsEqual;
@@ -17,7 +17,7 @@ import org.junit.Test;
 import java.util.Arrays;
 import java.util.Collections;
 
-public class DESAFIO_003_PilotoAutoServiceTest {
+public class DESAFIO_004_PilotoAutoServiceTest {
 
     private PilotoAutoService pilotoAutoService;
 

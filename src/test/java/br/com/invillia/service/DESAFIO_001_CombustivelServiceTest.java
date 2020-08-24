@@ -1,8 +1,6 @@
 package br.com.invillia.service;
 
-import br.com.invillia.model.Combustivel;
-import br.com.invillia.model.MotorQuantico;
-import br.com.invillia.model.TipoCombustivel;
+import br.com.invillia.model.*;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -10,7 +8,7 @@ import org.junit.Test;
 import java.util.Arrays;
 import java.util.Collections;
 
-import static org.hamcrest.CoreMatchers.*;
+import static org.hamcrest.CoreMatchers.equalTo;
 
 public class DESAFIO_001_CombustivelServiceTest {
 
@@ -19,6 +17,22 @@ public class DESAFIO_001_CombustivelServiceTest {
     @Before
     public void setUp() {
         pilotoAutoService = new PilotoAutoService();
+    }
+
+    @Test
+    public void calibragemDoPesoDaTripulacaoComCombustivel() {
+        final Nave nossaNave = new Nave();
+
+        final Tripulacao tripulacao = new Tripulacao();
+        tripulacao.setPeso(80);
+
+        final Combustivel combustivel = new Combustivel();
+        combustivel.setQuantidadeEmLitros(10000);
+
+        final Integer maximoDeCombustivel = pilotoAutoService.vericficarPesoMaximoCombustivel(tripulacao.getPeso(),
+                combustivel.getQuantidadeEmLitros());
+
+        Assert.assertTrue(nossaNave.PESO_MAXIMO_EM_KG == maximoDeCombustivel);
     }
 
     @Test
@@ -36,9 +50,24 @@ public class DESAFIO_001_CombustivelServiceTest {
 
         final Integer autonomia = pilotoAutoService.verificarCombustivel(motorQuantico);
 
-        Assert.assertThat(pilotoAutoService.verificarCombustivel(motorQuantico), equalTo(45));
         Assert.assertThat(autonomia, equalTo(45));
-        Assert.assertThat(motorQuantico.getAutonomia(), equalTo(45));
+    }
+
+    @Test
+    public void verificaAutonomiaCombustivelEArmazenarValorDaAutonomiaNoMotor() {
+        final MotorQuantico motorQuantico = new MotorQuantico();
+
+        final Combustivel combustivel = new Combustivel();
+        combustivel.setQuantidadeEmLitros(450);
+        combustivel.setTamanhoMaximoDoTanqueDeCombustivel(5000);
+        combustivel.setTipoCombustivel(TipoCombustivel.CRISTAL_DE_ENERGIA_LIQUIDO);
+
+        motorQuantico.setCombustiveisDisponiveis(Collections.singletonList(combustivel));
+        motorQuantico.setQuantidadeSaltosQuanticosTotal(100L);
+
+        pilotoAutoService.verificarCombustivel(motorQuantico);
+
+        Assert.assertThat(motorQuantico.getAutonomia(), equalTo(4));
     }
 
     @Test
@@ -61,7 +90,6 @@ public class DESAFIO_001_CombustivelServiceTest {
 
         final Integer autonomia = pilotoAutoService.verificarCombustivel(motorQuantico);
 
-        Assert.assertThat(pilotoAutoService.verificarCombustivel(motorQuantico), equalTo(48));
         Assert.assertThat(autonomia, equalTo(48));
         Assert.assertThat(motorQuantico.getAutonomia(), equalTo(48));
     }

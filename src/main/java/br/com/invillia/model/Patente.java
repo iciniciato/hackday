@@ -1,6 +1,8 @@
 package br.com.invillia.model;
 
-public enum Patente {
+import java.io.Serializable;
+
+public enum Patente implements Serializable {
     SOLDADO_SEGUNDA_CLASSE,
     SOLDADO_PRIMEIRA_CLASSE,
     CABO,

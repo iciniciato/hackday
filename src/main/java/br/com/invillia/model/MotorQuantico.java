@@ -68,4 +68,15 @@ public class MotorQuantico implements Serializable {
     public int hashCode() {
         return Objects.hash(quantidadeSaltosQuanticosTotal, combustiveisDisponiveis, mediaDeConsumo, informacaoDoMotor, autonomia);
     }
+
+    @Override
+    public String toString() {
+        return "MotorQuantico{" +
+                "quantidadeSaltosQuanticosTotal=" + quantidadeSaltosQuanticosTotal +
+                ", combustiveisDisponiveis=" + combustiveisDisponiveis +
+                ", mediaDeConsumo=" + mediaDeConsumo +
+                ", informacaoDoMotor=" + informacaoDoMotor +
+                ", autonomia=" + autonomia +
+                '}';
+    }
 }

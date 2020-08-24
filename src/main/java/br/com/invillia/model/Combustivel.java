@@ -47,4 +47,13 @@ public class Combustivel implements Serializable {
     public int hashCode() {
         return Objects.hash(tipoCombustivel, quantidadeEmLitros, tamanhoMaximoDoTanqueDeCombustivel);
     }
+
+    @Override
+    public String toString() {
+        return "Combustivel{" +
+                "tipoCombustivel=" + tipoCombustivel +
+                ", quantidadeEmLitros=" + quantidadeEmLitros +
+                ", tamanhoMaximoDoTanqueDeCombustivel=" + tamanhoMaximoDoTanqueDeCombustivel +
+                '}';
+    }
 }

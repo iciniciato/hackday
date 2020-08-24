@@ -1,7 +1,7 @@
 package br.com.invillia.service;
 
 import br.com.invillia.model.Combustivel;
-import br.com.invillia.model.Destino;
+import br.com.invillia.model.Rota;
 import br.com.invillia.model.MotorQuantico;
 import br.com.invillia.model.Nave;
 import br.com.invillia.model.Piloto;
@@ -47,9 +47,10 @@ public class PilotoAutoService {
      * Verifica a quantidade de combustível que há no motor e qual a sua autonomia
      *
      * - Deve levar em consideração as seguintes informações:
-     * -> Para efetuar um salto quântico é necessário 98 Litros em cristal liquido e 158 Litros em combustível de foguete
+     * -> Para efetuar 1 salto quântico é necessário 98 Litros em cristal liquido
+     * -> Para efetuar 1 salto quântico é necessário 158 Litros em combustível de foguete
      *
-     * @return Integer quantidade de saltos que o motor consiguirá fazer com a quantidade de combustivel atual
+     * @return Integer quantidade de saltos que o motor conseguirá fazer com a quantidade de combustível atual
      */
     public Integer verificarCombustivel(final MotorQuantico motorQuantico) {
         int autonomia = 0;
@@ -72,14 +73,14 @@ public class PilotoAutoService {
      *
      * @return true se houver combustivel o suficiente para efetuar a viagem
      */
-    public Boolean calcularCombustivelNecessario(final MotorQuantico nave, final Destino destino) {
+    public Boolean calcularSeExisteCombustivelNecessario(final Combustivel combustivel, final Rota destino) {
         return null;
     }
 
     /**
      * Verifica se há problemas no motor e se é possivel corrigi-los
      *
-     * @return String informando se há ou não problema no motor
+     * @return String retorna o codigo do erro do motor
      */
     public String verificarProblemasNoMotor(final MotorQuantico motorQuantico) {
         return null;
@@ -96,10 +97,10 @@ public class PilotoAutoService {
      *    Menor                          Maior
      *    A0 ----D4---------------------- Z10
      *
-     * @param destinos lista de destinos que serão necessários para efetuar a rota com sucesso
-     * @return retorna a rota que foi ordenada para poupar combustivel
+     * @param rota com os destinos que serão necessários para efetuar a rota com sucesso
+     * @return retorna os destinos que foi ordenada para poupar combustivel
      */
-    public List<Destino> calcularMenorDistancia(final List<Destino> destinos) {
+    public List<String> calcularMenorDistancia(final Rota rota) {
         return null;
     }
 
@@ -112,7 +113,7 @@ public class PilotoAutoService {
      * @return true se a o piloto automatico for ligado com sucesso
      * @exception Exception é retornada que caso não seja possivel ligar o piloto automatico
      */
-    public Boolean ligarPilotoAutomatico(final Piloto piloto, final Nave nave, final List<Destino> destinos) throws Exception{
+    public Boolean ligarPilotoAutomatico(final Piloto piloto, final Nave nave, final Rota rota) throws Exception{
         return true;
     }
 

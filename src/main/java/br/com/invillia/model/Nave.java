@@ -1,9 +1,11 @@
 package br.com.invillia.model;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 
 public class Nave implements Serializable {
+    public final int PESO_MAXIMO_EM_KG = 5060;
 
     private MotorQuantico motorQuantico;
     private String nome;

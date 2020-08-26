@@ -1,8 +1,6 @@
 package br.com.invillia.service;
 
-import br.com.invillia.model.Combustivel;
-import br.com.invillia.model.MotorQuantico;
-import br.com.invillia.model.TipoCombustivel;
+import br.com.invillia.model.*;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -19,6 +17,22 @@ public class DESAFIO_001_CombustivelServiceTest {
     @Before
     public void setUp() {
         pilotoAutoService = new PilotoAutoService();
+    }
+
+    @Test
+    public void calibragemDoPesoDaTripulacaoComCombustivel() {
+        final Nave nossaNave = new Nave();
+
+        final Tripulacao tripulacao = new Tripulacao();
+        tripulacao.setPeso(80);
+
+        final Combustivel combustivel = new Combustivel();
+        combustivel.setQuantidadeEmLitros(10000);
+
+        final Integer maximoDeCombustivel = pilotoAutoService.vericficarPesoMaximoCombustivel(tripulacao.getPeso(),
+                combustivel.getQuantidadeEmLitros());
+
+        Assert.assertTrue(nossaNave.PESO_MAXIMO_EM_KG == maximoDeCombustivel);
     }
 
     @Test

@@ -1,11 +1,6 @@
 package br.com.invillia.service;
 
-import br.com.invillia.model.Combustivel;
-import br.com.invillia.model.Rota;
-import br.com.invillia.model.MotorQuantico;
-import br.com.invillia.model.Nave;
-import br.com.invillia.model.Piloto;
-import br.com.invillia.model.TipoCombustivel;
+import br.com.invillia.model.*;
 
 import java.util.List;
 
@@ -42,6 +37,22 @@ public class PilotoAutoService {
 
     public static final int QTD_NECESSARIA_PARA_UM_SALTO_EM_CRISTAL = 98;
     public static final int QTD_NECESSARIA_PARA_UM_SALTO_EM_COMBUSTIVEL = 158;
+
+    /**
+     * Colocar o máximo de combustível possível
+     *
+     * - Deve levar em consideração as seguintes informações:
+     * -> Peso da tripulação, cada tripulante pesando 80kg
+     * -> São 7 tripulantes
+     *
+     * @return Integer quantidade de saltos que o motor conseguirá fazer com a quantidade de combustível atual
+     */
+    public Integer vericficarPesoMaximoCombustivel(final int pesoTripulacao, final int pesoCombustivel) {
+        int peso = 0;
+        peso = pesoTripulacao * 7;
+        peso = peso + pesoCombustivel;
+        return  peso;
+    }
 
     /**
      * Verifica a quantidade de combustível que há no motor e qual a sua autonomia

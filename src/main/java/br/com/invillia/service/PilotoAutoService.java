@@ -45,7 +45,6 @@ public class PilotoAutoService {
      * -> Peso da tripulação, cada tripulante pesando 80kg
      * -> São 7 tripulantes
      *
-     * @return Integer quantidade de saltos que o motor conseguirá fazer com a quantidade de combustível atual
      */
     public Integer vericficarPesoMaximoCombustivel(final int pesoTripulacao, final int pesoCombustivel) {
         return null;
@@ -57,7 +56,7 @@ public class PilotoAutoService {
      * - Deve levar em consideração as seguintes informações:
      * -> Para efetuar 1 salto quântico é necessário 98 Litros em cristal liquido
      * -> Para efetuar 1 salto quântico é necessário 158 Litros em combustível de foguete
-     *
+     * @return Integer quantidade de saltos que o motor conseguirá fazer com a quantidade de combustível atual
      */
     public Integer verificarCombustivel(final MotorQuantico motorQuantico) {
         return null;

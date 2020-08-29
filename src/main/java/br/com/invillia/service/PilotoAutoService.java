@@ -58,7 +58,6 @@ public class PilotoAutoService {
      * -> Para efetuar 1 salto quântico é necessário 98 Litros em cristal liquido
      * -> Para efetuar 1 salto quântico é necessário 158 Litros em combustível de foguete
      *
-     * @return Integer quantidade de saltos que o motor conseguirá fazer com a quantidade de combustível atual
      */
     public Integer verificarCombustivel(final MotorQuantico motorQuantico) {
         return null;

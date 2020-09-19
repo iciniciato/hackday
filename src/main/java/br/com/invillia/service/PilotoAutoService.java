@@ -64,8 +64,18 @@ public class PilotoAutoService {
      */
     public Integer verificarCombustivel(final MotorQuantico motorQuantico) {
 
-        Integer combustivelDisponivel = motorQuantico.getCombustiveisDisponiveis().get(0).getQuantidadeEmLitros();
-        Integer autonomia = combustivelDisponivel / QTD_NECESSARIA_PARA_UM_SALTO_EM_CRISTAL;
+        int autonomia = 0;
+        List<Combustivel> combustiveis = motorQuantico.getCombustiveisDisponiveis();
+
+        for(Combustivel combustivel : combustiveis){
+            TipoCombustivel tipoCombustivel = combustivel.getTipoCombustivel();
+            if(tipoCombustivel == TipoCombustivel.CRISTAL_DE_ENERGIA_LIQUIDO){
+                autonomia += combustivel.getQuantidadeEmLitros() / QTD_NECESSARIA_PARA_UM_SALTO_EM_CRISTAL;
+            } else if(tipoCombustivel == TipoCombustivel.COMBUSTIVEL_FOGUETE){
+                autonomia += combustivel.getQuantidadeEmLitros() / QTD_NECESSARIA_PARA_UM_SALTO_EM_COMBUSTIVEL;
+            }
+        }
+
         motorQuantico.setAutonomia(autonomia);
 
         return autonomia;

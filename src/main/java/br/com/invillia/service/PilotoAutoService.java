@@ -46,8 +46,12 @@ public class PilotoAutoService {
      * -> São 7 tripulantes
      *
      */
-    public Integer vericficarPesoMaximoCombustivel(final int pesoTripulacao, final int pesoCombustivel) {
-        return null;
+    public Double vericficarPesoMaximoCombustivel(final int pesoTripulacao, final int pesoCombustivel, final TipoCombustivel tipoCombustivel) {
+
+        Integer pesoTotalTripulacao = pesoTripulacao * 7;
+        Double pesoTotalCombustivel = pesoCombustivel * tipoCombustivel.getPeso();
+
+        return pesoTotalTripulacao + pesoTotalCombustivel;
     }
 
     /**

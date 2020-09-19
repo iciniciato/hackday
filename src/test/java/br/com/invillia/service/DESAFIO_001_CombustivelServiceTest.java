@@ -28,9 +28,10 @@ public class DESAFIO_001_CombustivelServiceTest {
 
         final Combustivel combustivel = new Combustivel();
         combustivel.setQuantidadeEmLitros(10000);
+        combustivel.setTipoCombustivel(TipoCombustivel.CRISTAL_DE_ENERGIA_LIQUIDO);
 
-        final Integer maximoDeCombustivel = pilotoAutoService.vericficarPesoMaximoCombustivel(tripulacao.getPeso(),
-                combustivel.getQuantidadeEmLitros());
+        final Double maximoDeCombustivel = pilotoAutoService.vericficarPesoMaximoCombustivel(tripulacao.getPeso(),
+                combustivel.getQuantidadeEmLitros(), combustivel.getTipoCombustivel());
 
         Assert.assertTrue(nossaNave.PESO_MAXIMO_EM_KG == maximoDeCombustivel);
     }

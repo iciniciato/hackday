@@ -63,7 +63,10 @@ public class PilotoAutoService {
      * @return Integer quantidade de saltos que o motor conseguirá fazer com a quantidade de combustível atual
      */
     public Integer verificarCombustivel(final MotorQuantico motorQuantico) {
-        return null;
+
+        Integer combustivelDisponivel = motorQuantico.getCombustiveisDisponiveis().get(0).getQuantidadeEmLitros();
+
+        return combustivelDisponivel / QTD_NECESSARIA_PARA_UM_SALTO_EM_CRISTAL;
     }
 
     /**

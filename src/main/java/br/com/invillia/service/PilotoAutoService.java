@@ -96,7 +96,21 @@ public class PilotoAutoService {
      * @return String retorna o codigo do erro do motor
      */
     public String verificarProblemasNoMotor(final MotorQuantico motorQuantico) {
-        return null;
+
+        String erros = "";
+
+        for (String erro : motorQuantico.getInformacaoDoMotor()) {
+            if (erro.equals("SEM NOVIDADES")) {
+                erros += 200;
+            } else {
+                erros += erro.split("'")[1] + ", ";
+            }
+        }
+        if(erros.contains(",")){
+            erros = erros.substring(0, erros.length() - 2);
+        }
+
+        return erros;
     }
 
     /**

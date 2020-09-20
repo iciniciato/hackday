@@ -23,7 +23,7 @@ public class DESAFIO_002_MotorQuanticoServiceTest {
     public void verificarProblemaNoMotorERetornaCodigoDoErro() {
 
         final MotorQuantico motorQuantico = new MotorQuantico();
-        motorQuantico.setInformacaoDoMotor(Collections.singletonList("Erro B405Y no Motor Quantico"));
+        motorQuantico.setInformacaoDoMotor(Collections.singletonList("Erro 'B405Y' no Motor Quantico"));
 
         final String codigo = pilotoAutoService.verificarProblemasNoMotor(motorQuantico);
 
@@ -52,7 +52,7 @@ public class DESAFIO_002_MotorQuanticoServiceTest {
 
         final String codigo = pilotoAutoService.verificarProblemasNoMotor(motorQuantico);
 
-        Assert.assertThat(codigo, equalTo("D405, C405Y, B405Y"));
+        Assert.assertThat(codigo, equalTo("B405Y, C405Y, D405"));
     }
 
 }

@@ -10,5 +10,6 @@ public enum Patente implements Serializable {
     SEGUNDO_SARGENTO,
     PRIMEIRO_SARGENTO,
     CAPITAO,
+    NAVEGADOR,
     MAJOR
 }

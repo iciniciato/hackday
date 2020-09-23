@@ -95,7 +95,7 @@ public class DESAFIO_004_PilotoAutoServiceTest {
         final MotorQuantico motorQuantico = new MotorQuantico();
 
         final Combustivel combustivel = new Combustivel();
-        combustivel.setQuantidadeEmLitros(450);
+        combustivel.setQuantidadeEmLitros(500);
         combustivel.setTamanhoMaximoDoTanqueDeCombustivel(5000);
         combustivel.setTipoCombustivel(TipoCombustivel.CRISTAL_DE_ENERGIA_LIQUIDO);
 

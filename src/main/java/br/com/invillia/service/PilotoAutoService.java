@@ -2,7 +2,11 @@ package br.com.invillia.service;
 
 import br.com.invillia.model.*;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 /**
  ;;;;;;;;;;;;;;;;coxxxxxdl;;;;;;;;;;;;;;;;
@@ -87,7 +91,16 @@ public class PilotoAutoService {
      * @return true se houver combustivel o suficiente para efetuar a viagem
      */
     public Boolean calcularSeExisteCombustivelNecessario(final Combustivel combustivel, final Rota destino) {
-        return null;
+
+        final MotorQuantico motorQuantico = new MotorQuantico();
+
+        motorQuantico.setCombustiveisDisponiveis(Collections.singletonList(combustivel));
+        motorQuantico.setInformacaoDoMotor(null);
+        motorQuantico.setQuantidadeSaltosQuanticosTotal(100L);
+
+        final Integer autonomia = verificarCombustivel(motorQuantico);
+
+        return destino.getDestinos().size() < autonomia;
     }
 
     /**
@@ -128,7 +141,29 @@ public class PilotoAutoService {
      * @return retorna os destinos que foi ordenada para poupar combustivel
      */
     public List<String> calcularMenorDistancia(final Rota rota) {
-        return null;
+
+        List<String> rotas = new ArrayList<>();
+
+        if(Objects.isNull(rota.getPontoDeOrigem())){
+            rotas = rota.getDestinos().stream().sorted().collect(Collectors.toList());
+        } else {
+            List<String> origens = new ArrayList<>();
+            List<String> demais = new ArrayList<>();
+            String letraOrigem = rota.getPontoDeOrigem().substring(0, 1);
+            for(String caminho : rota.getDestinos()){
+                if(caminho.contains(letraOrigem)){
+                    origens.add(caminho);
+                }else{
+                    demais.add(caminho);
+                }
+            }
+            origens = origens.stream().sorted().collect(Collectors.toList());
+            demais = demais.stream().sorted().collect(Collectors.toList());
+            rotas.addAll(origens);
+            rotas.addAll(demais);
+        }
+
+        return rotas;
     }
 
     /**
@@ -141,6 +176,29 @@ public class PilotoAutoService {
      * @exception Exception é retornada que caso não seja possivel ligar o piloto automatico
      */
     public Boolean ligarPilotoAutomatico(final Piloto piloto, final Nave nave, final Rota rota) throws Exception{
+
+        Boolean ret = true;
+
+        if(piloto.getPatente() != Patente.CAPITAO && piloto.getPatente() != Patente.NAVEGADOR){
+            ret = false;
+        }
+
+        String informacoes = verificarProblemasNoMotor(nave.getMotorQuantico());
+        if(informacoes.length() > 0 && informacoes.split(",").length > 0){
+            ret = false;
+        }
+
+        Integer saltos = verificarCombustivel(nave.getMotorQuantico());
+        if(saltos < rota.getDestinos().size()){
+            ret = false;
+        }
+
+        if(!ret){
+            throw new Exception();
+        }else{
+            PilotoAuto.getInstancia().setLigar(true);
+        }
+
         return true;
     }
 
